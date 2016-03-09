@@ -53,7 +53,7 @@ abstract class Xtp implements Simulator
      * Enable passive mode
      * true or false
      *
-     * @var string
+     * @var mixed
      */
     protected $passiveMode;
 
