@@ -94,7 +94,7 @@ abstract class Xtp implements Simulator
         if ('/' === substr($path, 0, 1)) {
             throw new Exception('absolute path is not allowed');
         }
-        if (!Arr::isSetAndNotEmptyString($config, 'passiveMode')) {
+        if (Arr::isSetAndNotEmptyString($config, 'passiveMode')) {
             $this->passiveMode = $config['passiveMode'] == 'true' || $config['passiveMode'] === true ? true : false;
         }
         $this->host       = $config['host'];
