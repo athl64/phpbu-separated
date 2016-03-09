@@ -19,6 +19,7 @@ use phpbu\App\Util\Str;
  */
 class Ftp extends Xtp implements Simulator
 {
+    
     public $passiveMode = false;
 
     /**
