@@ -50,6 +50,14 @@ abstract class Xtp implements Simulator
     protected $remotePath;
 
     /**
+     * Enable passive mode
+     * true or false
+     *
+     * @var string
+     */
+    protected $passiveMode;
+
+    /**
      * Check for loaded libraries or extensions.
      *
      * @throws \phpbu\App\Backup\Sync\Exception
@@ -85,6 +93,9 @@ abstract class Xtp implements Simulator
         $path = Arr::getValue($config, 'path', '');
         if ('/' === substr($path, 0, 1)) {
             throw new Exception('absolute path is not allowed');
+        }
+        if (!Arr::isSetAndNotEmptyString($config, 'passiveMode')) {
+            $this->passiveMode = $config['passiveMode'] == 'true' || $config['passiveMode'] === true ? true : false;
         }
         $this->host       = $config['host'];
         $this->user       = $config['user'];
