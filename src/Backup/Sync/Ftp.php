@@ -19,6 +19,8 @@ use phpbu\App\Util\Str;
  */
 class Ftp extends Xtp implements Simulator
 {
+    public $passiveMode = false;
+
     /**
      * Check for required loaded libraries or extensions.
      *
@@ -90,6 +92,8 @@ class Ftp extends Xtp implements Simulator
             }
         }
         $result->debug(sprintf('store file \'%s\' as \'%s\'', $localFile, $remoteFilename));
+
+        ftp_pasv($ftpConnection, $this->passiveMode);
 
         if (!ftp_put($ftpConnection, $remoteFilename, $localFile, FTP_BINARY)) {
             $error = error_get_last();
